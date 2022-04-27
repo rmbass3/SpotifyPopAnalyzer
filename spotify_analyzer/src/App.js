@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import Navbar from './components/Navbar';
+import Home from './components/Home'
 import './App.css';
 
 function App() {
@@ -62,7 +63,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <h1>Spotify React</h1>
+      <Home/>
       {!token ?
         <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
           Login to Spotify
