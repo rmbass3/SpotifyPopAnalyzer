@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.login-link, .login-link:link, .login-link:visited, .login-link:hover, .login-link:active, .login-link:focus {
+  color: inherit;
+  text-decoration: inherit;
+}

@@ -1,6 +1,7 @@
 import React from "react";
+import Login from "./Login";
 
-function Navbar(props) {
+function Navbar({token, setToken}) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
       <div className="container-fluid">
@@ -11,9 +12,9 @@ function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="#navbar">Link</a>
+              <Login token={token} setToken={setToken}/>
             </li>
-          </ul>
+          </ul>         
           <form className="d-flex">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-outline-light" type="submit">Search</button>
