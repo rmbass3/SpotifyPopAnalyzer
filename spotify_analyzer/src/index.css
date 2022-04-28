@@ -22,3 +22,7 @@ code {
   height: 100vh;
   background-color: rgb(59, 59, 59);
 }
+
+.user-pfp {
+  width: 50px;
+}
