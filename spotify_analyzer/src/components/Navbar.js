@@ -1,7 +1,23 @@
 import React from "react";
 import Login from "./Login";
 
-function Navbar({token, setToken}) {
+function Navbar({token, setToken, user}) {
+
+  const getLoginName = () => {
+    return (token ? 
+    <li className="mt-0 mt-lg-1">
+      <p className="user-login-title text-light mt-0 mt-lg-2 me-0 me-lg-4">
+        Logged in as: <b>{user.display_name}</b>
+      </p>
+    </li> 
+    : 
+    <li>
+      <p className="user-login-title text-light mt-0 mt-lg-2 me-0 me-lg-4">
+        Please log in.
+      </p>
+    </li>)
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
       <div className="container-fluid">
@@ -10,15 +26,12 @@ function Navbar({token, setToken}) {
           <span className="navbar-toggler-icon "></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            {getLoginName()}
             <li className="nav-item">
               <Login token={token} setToken={setToken}/>
             </li>
-          </ul>         
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-light" type="submit">Search</button>
-          </form>
+          </ul>
         </div>
       </div>
     </nav>

@@ -20,16 +20,16 @@ function User({token, user, setUser}){
     }
   }, [token, setUser])
 
-  const isLoggedIn = () => {
+  const getLoginName = () => {
     return (token ? 
     <div>
-      <h2 className="user-login-title text-center">
+      <h2 className="user-login-title text-center text-light">
         Logged in as: <b>{user.display_name}</b>
       </h2>
     </div> 
     : 
     <div>
-      <h2 className="user-login-title text-center">
+      <h2 className="user-login-title text-center text-light">
         Please log in.
       </h2>
     </div>)
@@ -37,7 +37,7 @@ function User({token, user, setUser}){
 
   return(
     <div>
-      {isLoggedIn()}
+      {getLoginName()}
     </div>
   )
 }

@@ -28,12 +28,12 @@ function Login({token, setToken}){
   return (
     <div>
       {!token ?
-        <button className="btn btn-outline-success">
+        <button className="btn btn-secondary mt-0 mt-lg-1">
           <a className="login-link" href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
             Login to Spotify
           </a>
         </button>
-        : <button className="btn btn-outline-danger" onClick={logout}>
+        : <button className="btn btn-secondary mt-0 mt-lg-1" onClick={logout}>
             Logout
           </button>
       }
