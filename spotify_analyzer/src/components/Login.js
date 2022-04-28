@@ -5,6 +5,7 @@ function Login({token, setToken}){
   const REDIRECT_URI = "http://localhost:3000"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
+  const SCOPE = "user-top-read"
 
   useEffect(() => {
     const hash = window.location.hash
@@ -29,7 +30,7 @@ function Login({token, setToken}){
     <div>
       {!token ?
         <button className="btn btn-secondary mt-0 mt-lg-1">
-          <a className="login-link" href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
+          <a className="login-link" href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPE}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
             Login to Spotify
           </a>
         </button>
