@@ -1,14 +1,24 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Login from "./Login";
 
 function Navbar({token, setToken, user}) {
 
+
+  const [pfp, setPfp] = useState("")
+
+  useEffect(() => {
+    const getPfp = () => {
+      if (user.images != null) {
+        setPfp(user.images[0].url)
+      }
+    }
+    getPfp()
+  }, [user])
+
   const getLoginName = () => {
-    return (token ? 
+    return ((token && user) ? 
     <li className="mt-0 mt-lg-1">
-      <p className="user-login-title text-light mt-0 mt-lg-2 me-0 me-lg-4">
-        Logged in as: <b>{user.display_name}</b>
-      </p>
+      <img className="rounded-circle" src={pfp} alt="user-pfp"/>
     </li> 
     : 
     <li>
