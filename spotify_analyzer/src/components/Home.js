@@ -1,42 +1,40 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Navbar from "./Navbar";
+import axios from "axios"
 
 function Home(props) {
 
   const [token, setToken] = useState("")
+  const [user, setUser] = useState()
   // const [searchKey, setSearchKey] = useState("")
   // const [artists, setArtists] = useState([])
 
-  // const searchArtists = async (e) => {
-  //   e.preventDefault()
-  //   const {data} = await axios.get("https://api.spotify.com/v1/search", {
-  //       headers: {
-  //           Authorization: `Bearer ${token}`
-  //       },
-  //       params: {
-  //           q: searchKey,
-  //           type: "artist"
-  //       }
-  //   })
+  const getUser = () => {
+    const data = axios.get("https://api.spotify.com/v1/me", {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
 
-  //   setArtists(data.artists.items)
-  // }
+        }
+    }).then(response => {
+      setUser(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+    console.log(user)
+  }
 
-  // const renderArtists = () => {
-  //   return artists.map(artist => (
-  //       <div key={artist.id}>
-  //           {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
-  //           {artist.name}
-  //       </div>
-  //   ))
-  // }
+  useEffect(() => {
+    getUser()
+  }, [setToken]) 
 
 
   return (
     <div className="home" id="home">
       <Navbar token={token} setToken={setToken}/>
-      <h1 className="home-title text-center mt-5">Spotify Analyzer</h1>
-      
+      <h1 className="home-title text-center mt-5 text-light">Spotify Analyzer</h1>
+      {user ? <div>Logged in</div> : <div>Not logged in</div>}
     {/*
       <form onSubmit={searchArtists}>
         <input type="text" onChange={e => setSearchKey(e.target.value)}/>
