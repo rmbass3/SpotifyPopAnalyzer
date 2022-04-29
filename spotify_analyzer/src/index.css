@@ -26,3 +26,9 @@ code {
 .user-pfp {
   width: 50px;
 }
+
+.track-container {
+  border: 1px solid white;
+  width: 20vw;
+  height: 200px;
+}
