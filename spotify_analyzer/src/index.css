@@ -41,3 +41,9 @@ code {
   /* width: clamp(165px, 15vw, 250px); */
   width: 250px;
 }
+
+.card-text, .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
