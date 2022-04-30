@@ -28,9 +28,9 @@ function User({token, user, setUser}){
     </div> 
     : 
     <div>
-      <h2 className="user-login-title text-center text-light">
-        Please log in.
-      </h2>
+      <h3 className="user-login-title text-center text-light">
+        Log in to continue.
+      </h3>
     </div>)
   }
 

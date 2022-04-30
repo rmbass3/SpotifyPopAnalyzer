@@ -21,10 +21,10 @@ function Navbar({token, setToken, user}) {
       <img className="rounded-circle user-pfp" src={pfp} alt="user-pfp"/>
     </li> 
     : 
-    <li>
-      <p className="user-login-title text-light mt-0 mt-lg-2 me-0 me-lg-4">
+    <li className="d-flex align-items-center">
+      <span className="user-login-title text-light me-0 me-lg-4 mb-2 mb-lg-0">
         Login to continue.
-      </p>
+      </span>
     </li>)
   }
 
