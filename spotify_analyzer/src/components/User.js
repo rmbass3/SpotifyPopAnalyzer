@@ -22,9 +22,9 @@ function User({token, user, setUser}){
   const getLoginName = () => {
     return (token ? 
     <div>
-      <h2 className="user-login-title text-center text-light">
-        Logged in as: <b>{user.display_name}</b>
-      </h2>
+      <h1 className="user-login-title text-center text-light mt-5">
+        <b>{user.display_name}'s</b> Top 10
+      </h1>
     </div> 
     : 
     <div>

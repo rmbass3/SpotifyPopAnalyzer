@@ -11,7 +11,7 @@ function FavoriteT({token, favoriteT, setFavoriteT}){
               Authorization: `Bearer ${token}`
           },
           params: {
-            limit: 5,
+            limit: 10,
             time_range: "short_term"
           }
       })
@@ -24,20 +24,19 @@ function FavoriteT({token, favoriteT, setFavoriteT}){
     }
   }, [token, setFavoriteT])
   
-  // useEffect(() => {
-  //   const displayFavoriteT = () => {
-
-  //   }
-  //   if (favoriteT != null){
-  //     displayFavoriteT()
-  //   }
-    
-  // }, [favoriteT])
   const displayFavoriteT = () => {
     if (favoriteT.items != null){
       return favoriteT.items.map(track => (
-        <div key={track.id} className="track-container d-inline-flex justify-content-center align-items-center">
-          <h4 className="track-name text-light">{track.name}</h4>
+        // <div key={track.id} className="track-container d-inline-flex justify-content-center align-items-center">
+        //   <h4 className="track-name text-light">{track.name}</h4>
+        // </div>
+        <div key={track.id} className="card track-card">
+          <img src={track.album.images[1].url} className="card-img-top" alt="album-img"/>
+          <div className="card-body">
+            <h5 className="card-title">{track.name}</h5>
+            <p className="card-text">{track.album.name}</p>
+            <p className="card-text">{track.artists[0].name}</p>
+          </div>
         </div>
       ))
     }
@@ -45,7 +44,7 @@ function FavoriteT({token, favoriteT, setFavoriteT}){
 
   return(
     <div>
-      <div className="tracklist d-flex flex-wrap container fluid mt-5">
+      <div className="tracklist d-flex flex-wrap container mt-5 justify-content-center">
         {displayFavoriteT()}
       </div>
     </div>

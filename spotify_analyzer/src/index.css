@@ -18,8 +18,7 @@ code {
   text-decoration: inherit;
 }
 
-.home {
-  height: 100vh;
+.App {
   background-color: rgb(59, 59, 59);
 }
 
@@ -31,4 +30,14 @@ code {
   border: 1px solid white;
   width: 20vw;
   height: 200px;
+}
+
+.tracklist {
+  max-width: 1300px !important;
+  min-width: 900px !important;
+}
+
+.track-card {
+  /* width: clamp(165px, 15vw, 250px); */
+  width: 250px;
 }
