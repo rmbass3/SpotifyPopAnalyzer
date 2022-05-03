@@ -1,29 +1,38 @@
 import React, {useEffect} from "react";
 import axios from "axios";
 
-function User({token, user, setUser}){
+function User({token, setToken, user, setUser}){
 
   useEffect(() => {
-    const getUser = async (e) => {
-      const {data} = await axios.get("https://api.spotify.com/v1/me", {
+    const getUser = async () => {
+      const resp = await axios.get("https://api.spotify.com/v1/me", {
           headers: {
               Authorization: `Bearer ${token}`
           },
       })
-      console.log(data)
+      return resp
+    }
+    
+    getUser()
+    .then(data => {
       setUser(data)
-    }
+      console.log(data)
+    })
+    .catch(error => {
+      if (error.response.status === 401){
+        console.log("Expired token at User")
+        setToken(null)
+        setUser(null)
+      }
+    })
 
-    if (token){
-      getUser()
-    }
-  }, [token, setUser])
+  }, [token, setUser, setToken])
 
   const getLoginName = () => {
-    return (token ? 
+    return (user ?
     <div>
       <h1 className="user-login-title text-center text-light mt-5">
-        <b>{user.display_name}'s</b> Top 10
+        <b>{user.data?.display_name}'s</b> Top 10
       </h1>
     </div> 
     : 

@@ -12,7 +12,7 @@ function Home(props) {
   return (
     <div className="home" id="home">
       <Navbar token={token} setToken={setToken} user={user}/>
-      <User token={token} user={user} setUser={setUser}/>
+      <User token={token} setToken={setToken} user={user} setUser={setUser}/>
       <FavoriteT token={token} favoriteT={favoriteT} setFavoriteT={setFavoriteT}/>
     </div>
   )

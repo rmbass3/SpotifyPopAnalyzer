@@ -8,8 +8,8 @@ function Navbar({token, setToken, user}) {
 
   useEffect(() => {
     const getPfp = () => {
-      if (user.images != null) {
-        setPfp(user.images[0].url)
+      if (user?.data?.images != null) {
+        setPfp(user.data.images[0].url)
       }
     }
     getPfp()
