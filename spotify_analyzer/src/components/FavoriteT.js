@@ -33,17 +33,17 @@ function FavoriteT({token, favoriteT, setFavoriteT}){
         //   <h4 className="track-name text-light">{track.name}</h4>
         // </div>
         <Tilt key={track.id}>
-          <div className="card track-card mt-3">
+          <div className="card bg-dark text-white track-card mt-3">
             <img src={track.album.images[1].url} className="card-img-top" alt="album-img"/>
             <h5 className="card-title m-3 text-center">{track.name}</h5>
             <ul className="list-group list-group-flush">
-              <li className="card-text list-group-item fst-italic">
+              <li className="card-text list-group-item fst-italic bg-dark text-white">
                 <FontAwesomeIcon icon={faRecordVinyl}/>
                 <div className="d-inline ms-2">
                   {track.album.name}
                 </div>
               </li>
-              <li className="card-text list-group-item">
+              <li className="card-text list-group-item bg-dark text-white">
                 <FontAwesomeIcon icon={faUser}/>
                 <div className="d-inline ms-2">
                   {track.artists[0].name}
