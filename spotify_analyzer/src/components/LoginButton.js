@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-function Login({token, setToken}){
+function LoginButton({token, setToken, setUser}){
   const CLIENT_ID = "d0d9e2af65404ec2a8020d0b1079068b"
   const REDIRECT_URI = "http://localhost:3000"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
@@ -23,9 +23,10 @@ function Login({token, setToken}){
 
   const logout = () => {
       setToken("")
+      setUser([])
       window.localStorage.removeItem("token")
   }
-// <a className="nav-link" href="#navbar">Link</a>
+  
   return (
     <div>
       {!token ?
@@ -42,4 +43,4 @@ function Login({token, setToken}){
   )
 }
 
-export default Login
+export default LoginButton

@@ -1,24 +1,12 @@
-import React, {useState, useEffect} from "react";
-import Login from "./Login";
+import React from "react";
+import Login from "./LoginButton";
 
-function Navbar({token, setToken, user}) {
-
-
-  const [pfp, setPfp] = useState("")
-
-  useEffect(() => {
-    const getPfp = () => {
-      if (user?.data?.images != null) {
-        setPfp(user.data.images[0].url)
-      }
-    }
-    getPfp()
-  }, [user])
+function Navbar({token, setToken, user, setUser}) {
 
   const getLoginName = () => {
     return ((token && user) ? 
     <li className="mt-1 mt-lg-0 me-0 me-lg-4 mb-2 mb-lg-0">
-      <img className="rounded-circle user-pfp" src={pfp} alt="user-pfp"/>
+      <img className="rounded-circle user-pfp" src={user.data ? user.data.images[0].url : null} alt="user-pfp"/>
     </li> 
     : 
     <li className="d-flex align-items-center">
@@ -39,7 +27,7 @@ function Navbar({token, setToken, user}) {
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {getLoginName()}
             <li className="nav-item">
-              <Login token={token} setToken={setToken}/>
+              <Login token={token} setToken={setToken} setUser={setUser}/>
             </li>
           </ul>
         </div>
