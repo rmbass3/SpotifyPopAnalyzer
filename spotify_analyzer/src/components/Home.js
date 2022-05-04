@@ -42,8 +42,8 @@ function Home() {
               Authorization: `Bearer ${token}`
           },
           params: {
-            limit: 10,
-            time_range: "short_term"
+            limit: 50,
+            time_range: "long_term"
           }
       })
       console.log(data)

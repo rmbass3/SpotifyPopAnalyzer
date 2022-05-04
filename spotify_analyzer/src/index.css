@@ -48,6 +48,10 @@ code {
   text-overflow: ellipsis;
 }
 
-.progress-circle {
-  width: 25%;
+.progress-circle svg{
+  width: 100%;
 }
+
+/* .progress-comment {
+  border: 1px solid white;
+} */
