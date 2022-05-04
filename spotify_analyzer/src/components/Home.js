@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from "react";
+import axios from "axios";
 import Navbar from "./Navbar";
 import User from "./User";
 import FavoriteT from "./FavoriteT";
-import axios from "axios";
+import Progress from "./Progress";
+
 
 function Home() {
 
   const [token, setToken] = useState("")
   const [user, setUser] = useState([])
   const [favoriteT, setFavoriteT] = useState([])
+  const [percent, setPercent] = useState(90)
 
   // User
   useEffect(() => {
@@ -57,6 +60,7 @@ function Home() {
     <div className="home" id="home">
       <Navbar token={token} setToken={setToken} user={user} setUser={setUser}/>
       <User token={token} setToken={setToken} user={user} setUser={setUser}/>
+      <Progress percent={percent}/>
       <FavoriteT token={token} user={user} favoriteT={favoriteT} />
     </div>
   )
