@@ -9,7 +9,14 @@ function FavoriteT({token, user, favoriteT}){
       return favoriteT.items.map(track => (
         <Tilt key={track.id}>
           <div className="card bg-dark text-white track-card mt-3">
-            <img src={track.album.images[1].url} className="card-img-top" alt="album-img"/>
+            <div className="position-relative">
+              <div className="position-absolute top-0 end-0">
+                <span className="badge bg-dark rounded-pill fs-5 shadow">
+                  {track.popularity}
+                </span>
+              </div>
+              <img src={track.album.images[1].url} className="card-img-top" alt="album-img"/>
+            </div>
             <h5 className="card-title m-3 text-center">{track.name}</h5>
             <ul className="list-group list-group-flush">
               <li className="card-text list-group-item fst-italic bg-dark text-white">

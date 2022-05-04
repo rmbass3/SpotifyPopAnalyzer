@@ -27,7 +27,7 @@ function Progress({percent, setPercent, user, token, favoriteT}) {
             shape={'semi circle'}
             clockwise={false}
             textStyle={{ fill: 'white' }}
-            pathColor={['#31c3e7', '#6210db']}
+            pathColor={['#ff91e2', '#7ae0f5']}
             animation={{ 
               duration: 1000,
               delay: 100,
