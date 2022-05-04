@@ -48,6 +48,6 @@ code {
   text-overflow: ellipsis;
 }
 
-.progressbar {
-  width: 20%;
+.progress-circle {
+  width: 25%;
 }

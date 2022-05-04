@@ -33,7 +33,7 @@ function FavoriteT({token, user, favoriteT}){
 
   return ((token && user) ?
     <div>
-      <div className="tracklist d-flex flex-wrap container mt-4 justify-content-center">
+      <div className="tracklist d-flex flex-wrap container my-4 justify-content-center">
         {displayFavoriteT()}
       </div>
     </div>

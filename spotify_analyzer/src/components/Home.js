@@ -60,8 +60,8 @@ function Home() {
     <div className="home" id="home">
       <Navbar token={token} setToken={setToken} user={user} setUser={setUser}/>
       <User token={token} setToken={setToken} user={user} setUser={setUser}/>
-      <Progress percent={percent}/>
-      <FavoriteT token={token} user={user} favoriteT={favoriteT} />
+      <Progress percent={percent} setPercent={setPercent} user={user} token={token} favoriteT={favoriteT}/>
+      <FavoriteT token={token} user={user} favoriteT={favoriteT}/>
     </div>
   )
 }

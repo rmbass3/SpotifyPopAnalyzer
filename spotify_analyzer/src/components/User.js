@@ -7,8 +7,12 @@ function User({token, setToken, user, setUser}){
     return ((user && token) ?
     <div>
       <h1 className="user-login-title text-center text-light mt-5">
-        <b>{user.data?.display_name}'s</b> Top 10
+        Music Popularity Score
       </h1>
+      <h2 className="user-login-title text-center text-light mt-2">
+        {user.data?.display_name}
+      </h2>
+      
     </div> 
     : 
     <div>
