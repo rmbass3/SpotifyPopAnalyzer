@@ -52,6 +52,44 @@ code {
   width: 100%;
 }
 
+.accordion-header .accordion-button {
+  color: white;
+  background-color:rgb(33, 37, 41);
+  border: none;
+}
+
+.accordion-header .accordion-button:not(.collapsed) {
+  color: white;
+  background-color:rgb(33, 37, 41)
+}
+
+.accordion-header .accordion-button::after:not(.collapsed) {
+  color: white;
+  background-color: white;
+}
+
+.accordion-header .accordion-button::after {
+  display: none;
+}
+
+.accordion .accordion-item {
+  background-color:rgb(24, 26, 27);
+  color: white;
+}
+
+.accordion-button svg {
+  left: 90%;
+}
 /* .progress-comment {
   border: 1px solid white;
 } */
+
+.accordion-header .accordion-button:focus {
+  border-color: #e5efff;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem rgba(233, 241, 252, 0.25);
+}
+
+.progress-comment .rating {
+  font-size: clamp(30px, 5vw, 75px);
+}
