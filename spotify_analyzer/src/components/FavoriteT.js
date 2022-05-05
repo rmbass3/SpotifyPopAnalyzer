@@ -12,7 +12,7 @@ function FavoriteT({token, user, favoriteT}){
             <div className="position-relative">
               <div className="position-absolute top-0 end-0">
                 <span className="badge bg-dark rounded-pill fs-5 shadow">
-                  {track.popularity}
+                  {track.popularity}%
                 </span>
               </div>
               <img src={track.album.images[1].url} className="card-img-top" alt="album-img"/>

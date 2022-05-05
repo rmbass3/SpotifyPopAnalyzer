@@ -93,3 +93,9 @@ code {
 .progress-comment .rating {
   font-size: clamp(30px, 5vw, 75px);
 }
+
+.accordion-body .list-group-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

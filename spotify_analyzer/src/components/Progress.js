@@ -25,6 +25,23 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
         } else if (track.popularity > popArr[0]?.popularity){
           popArr = []
           popArr.push(track)
+        } else if (track.popularity === popArr[0]?.popularity){
+          popArr.push(track)
+        }
+      })
+      return popArr
+    }
+
+    const calculateLeastPop = () => {
+      let popArr = []
+      favoriteT.items.forEach(track => {
+        if (popArr.length === 0){
+          popArr.push(track)
+        } else if (track.popularity < popArr[0]?.popularity){
+          popArr = []
+          popArr.push(track)
+        } else if (track.popularity === popArr[0]?.popularity){
+          popArr.push(track)
         }
       })
       return popArr
@@ -33,6 +50,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
     if (user && token && favoriteT.items){
       setPercent(calculatePopularity())
       setMostPop(calculateMostPop())
+      setLeastPop(calculateLeastPop())
     }
   }, [user, token, favoriteT, setPercent, setMostPop, setLeastPop])
 
@@ -40,11 +58,22 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
     if (mostPop){
       return mostPop.map(track => (
         <li className="bg-dark text-white list-group-item" key={track.id}>
-          <b>{track.name}</b> - {track.popularity}% Popularity
+          <img src={track.album.images[2].url} className="me-3" alt="most-pop-img"/>
+          <b>{track.name}</b> - {track.popularity}%
         </li>
       ))
     }
+  }
 
+  const displayLeastPop = () => {
+    if (leastPop){
+      return leastPop.map(track => (
+        <li className="bg-dark text-white list-group-item" key={track.id}>
+          <img src={track.album.images[2].url} className="me-3" alt="least-pop-img"/>
+          <b>{track.name}</b> - {track.popularity}%
+        </li>
+      ))
+    }
   }
   /*
   if average song popularity less than or equal to 25% rating says "hipster" 
@@ -85,7 +114,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
               </h2>
               <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                  The popularity score is a value between 0 and 100, with 0 being least the popular, and 100 being the most popular. Spotify calculates this number based on the total number of plays a song has had recently.
+                  The popularity score is a value between 0 and 100, with 0 being least the popular, and 100 being the most popular. Spotify calculates this number based on the total number of plays a song has had recently. Average Popularity Score is based on your all time top 50 songs.
                 </div>
               </div>
             </div>
@@ -113,7 +142,9 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
               </h2>
               <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <ul className="list-group">
+                    {displayLeastPop()}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -126,7 +157,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
               </h2>
               <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                  <strong>This is the fourth item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  Todo
                 </div>
               </div>
             </div>

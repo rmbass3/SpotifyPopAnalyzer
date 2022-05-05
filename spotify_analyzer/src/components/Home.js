@@ -17,21 +17,18 @@ function Home() {
 
   // User
   useEffect(() => {
-    const getUser = () => {
-      axios.get("https://api.spotify.com/v1/me", {
+    const getUser = async (e) => {
+      const {data} = await axios.get("https://api.spotify.com/v1/me", {
           headers: {
               Authorization: `Bearer ${token}`
           },
-      }).then(data => {
-        console.log("User data:", data)
-        setUser(data)
-      }).catch(error => {
-        console.log("getUser request failed")
-
       })
-      
+      console.log(data)
+      setUser(data)
     }
+
     if (token){
+      console.log("token", token)
       getUser()
     }
   }, [token, setUser, setToken])

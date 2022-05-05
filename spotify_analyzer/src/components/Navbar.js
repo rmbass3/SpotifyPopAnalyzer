@@ -6,7 +6,7 @@ function Navbar({token, setToken, user, setUser}) {
   const getLoginName = () => {
     return ((token && user) ? 
     <li className="mt-1 mt-lg-0 me-0 me-lg-4 mb-2 mb-lg-0">
-      <img className="rounded-circle user-pfp" src={user.data ? user.data.images[0].url : null} alt="user-pfp"/>
+      <img className="rounded-circle user-pfp" src={user.images ? user.images[0].url : null} alt="user-pfp"/>
     </li> 
     : 
     <li className="d-flex align-items-center">
