@@ -8,7 +8,7 @@ function FavoriteT({token, user, favoriteT}){
     if (favoriteT.items != null){
       return favoriteT.items.map((track, index) => (
         <Tilt key={track.id}>
-          <div className="card bg-dark text-white track-card mt-3">
+          <div className="card bg-dark text-white track-card mt-3 mx-1">
             <div className="position-relative">
               <div className="position-absolute top-0 start-0">
                 <span className="badge bg-dark index-pill fs-5 shadow">

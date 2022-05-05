@@ -33,7 +33,7 @@ code {
 }
 
 .tracklist {
-  max-width: 1300px !important;
+  max-width: 1350px !important;
   min-width: 900px !important;
 }
 
@@ -106,10 +106,10 @@ code {
 
 .index-pill {
   border-radius: 0px 0px 15px 0px;
-  border: 2px solid white;
+  border: 2px solid rgb(83, 83, 83);
 }
 
 .percent-pill {
   border-radius: 0px 0px 0px 15px;
-  border: 2px solid white;
+  border: 2px solid rgb(83, 83, 83);
 }

@@ -18,41 +18,54 @@ function Home() {
   // User
   useEffect(() => {
     const getUser = async (e) => {
-      const {data} = await axios.get("https://api.spotify.com/v1/me", {
-          headers: {
-              Authorization: `Bearer ${token}`
-          },
-      })
-      console.log(data)
-      setUser(data)
+      if (token){
+        const {data} = await axios.get("https://api.spotify.com/v1/me", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        })
+        .catch(e => {
+          console.log("stale", e)
+          setToken("")
+          setUser([])
+          window.localStorage.removeItem("token")
+        })
+        console.log(data)
+        setUser(data)
+      }
     }
 
-    if (token){
-      console.log("token", token)
-      getUser()
-    }
+    getUser()
+
   }, [token, setUser, setToken])
 
   // Favorite Track
   useEffect(() => {
     const getFavoriteT = async (e) => {
-      const {data} = await axios.get("https://api.spotify.com/v1/me/top/tracks", {
-          headers: {
-              Authorization: `Bearer ${token}`
-          },
-          params: {
-            limit: 50,
-            time_range: "long_term"
-          }
-      })
-      console.log(data)
-      setFavoriteT(data)
+      if (token) {
+        const {data} = await axios.get("https://api.spotify.com/v1/me/top/tracks", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+              limit: 50,
+              time_range: "long_term"
+            }
+        })
+        .catch(e => {
+          console.log("stale", e)
+          setToken("")
+          setUser([])
+          window.localStorage.removeItem("token")
+        })
+        console.log(data)
+        setFavoriteT(data)
+      }
     }
 
-    if (token){
-      getFavoriteT()
-    }
-  }, [token, setFavoriteT])
+    getFavoriteT()
+
+  }, [token, setFavoriteT, setToken])
 
 
   return (
