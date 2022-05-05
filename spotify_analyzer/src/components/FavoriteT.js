@@ -6,12 +6,17 @@ function FavoriteT({token, user, favoriteT}){
   
   const displayFavoriteT = () => {
     if (favoriteT.items != null){
-      return favoriteT.items.map(track => (
+      return favoriteT.items.map((track, index) => (
         <Tilt key={track.id}>
           <div className="card bg-dark text-white track-card mt-3">
             <div className="position-relative">
+              <div className="position-absolute top-0 start-0">
+                <span className="badge bg-dark index-pill fs-5 shadow">
+                  #{index + 1}
+                </span>
+              </div>
               <div className="position-absolute top-0 end-0">
-                <span className="badge bg-dark rounded-pill fs-5 shadow">
+                <span className="badge bg-dark percent-pill fs-5 shadow">
                   {track.popularity}%
                 </span>
               </div>

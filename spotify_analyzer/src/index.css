@@ -94,8 +94,22 @@ code {
   font-size: clamp(30px, 5vw, 75px);
 }
 
+.progress-comment .rating-comment {
+  font-size: clamp(12px, 2vw, 30px);
+}
+
 .accordion-body .list-group-item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.index-pill {
+  border-radius: 0px 0px 15px 0px;
+  border: 2px solid white;
+}
+
+.percent-pill {
+  border-radius: 0px 0px 0px 15px;
+  border: 2px solid white;
 }

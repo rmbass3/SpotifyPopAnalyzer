@@ -11,7 +11,7 @@ function Home() {
   const [token, setToken] = useState("")
   const [user, setUser] = useState([])
   const [favoriteT, setFavoriteT] = useState([])
-  const [percent, setPercent] = useState(90)
+  const [percent, setPercent] = useState(-1)
   const [mostPop, setMostPop] = useState([])
   const [leastPop, setLeastPop] = useState([])
 

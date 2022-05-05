@@ -75,6 +75,38 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
       ))
     }
   }
+
+  const displayRating = () => {
+    if (percent) {
+      if (percent === -1){
+        return "Loading..."
+      } else if (percent <= 25){
+        return "Hipster"
+      } else if (percent <= 50){
+        return "Based"
+      } else if (percent <= 75){
+        return "Normie"
+      } else {
+        return "Pop Enjoyer"
+      }
+    }
+  }
+
+  const displayRatingComment = () => {
+    if (percent) {
+      if (percent === -1){
+        return "Loading..."
+      } else if (percent <= 25){
+        return "No one listens to your favorite music"
+      } else if (percent <= 50){
+        return "Not too obscure, but just right"
+      } else if (percent <= 75){
+        return "Just accept it, you listen to pop music"
+      } else {
+        return "Ok we get it, you like pop music"
+      }
+    }
+  }
   /*
   if average song popularity less than or equal to 25% rating says "hipster" 
   if greater than 25 but less than or equal to 50 rating says "based"
@@ -83,7 +115,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
   */
 
 
-  return ((user && token) ?
+  return ((user && token && percent && favoriteT) ?
     <div className="container">
       <div className="row mt-5">
         <div className="progress-circle col d-flex justify-content-center">
@@ -103,12 +135,13 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
           />
         </div>
         <div className="progress-comment col-7 d-flex flex-column justify-content-center align-items-center mb-5">
-          <h1 className="rating text-light mb-5">Rating: Based</h1>
+          <h1 className="rating text-light mb-2">Rating: {displayRating()}</h1>
+          <h4 className="rating-comment text-light mb-3 fst-italic">{displayRatingComment()}</h4>
           <div className="accordion w-100" id="accordionExample">
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
                 <button className="accordion-button position-relative collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Popularity Score: {percent}%
+                  Popularity Score: {percent === -1 ? 0 : percent}%
                   <FontAwesomeIcon icon={faAngleDown} className="position-absolute top-50 translate-middle"/>
                 </button>
               </h2>
