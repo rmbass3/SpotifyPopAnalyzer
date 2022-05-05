@@ -113,3 +113,7 @@ code {
   border-radius: 0px 0px 0px 15px;
   border: 2px solid rgb(83, 83, 83);
 }
+
+.data-plot {
+  border-radius: 20px;
+}

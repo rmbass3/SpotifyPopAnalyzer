@@ -2,8 +2,9 @@ import React, {useEffect} from "react";
 import Progressbar from 'react-js-progressbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import Plot from 'react-plotly.js'
 
-function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMostPop, leastPop, setLeastPop}) {
+function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMostPop, leastPop, setLeastPop, plotData, setPlotData}) {
 
 
 
@@ -47,12 +48,32 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
       return popArr
     }
 
+    const calculateTrace = () => {
+      // x = index
+      // y = pop
+      let x = []
+      let y = []
+      favoriteT.items.forEach((track, index) => {
+        x.push(index + 1)
+        y.push(track.popularity)
+      })
+      let trace = {
+        x: x,
+        y: y,
+        mode: 'lines',
+        type: 'scatter'
+      }
+      console.log(trace)
+      return trace
+    }
+
     if (user && token && favoriteT.items){
       setPercent(calculatePopularity())
       setMostPop(calculateMostPop())
       setLeastPop(calculateLeastPop())
+      setPlotData(calculateTrace())
     }
-  }, [user, token, favoriteT, setPercent, setMostPop, setLeastPop])
+  }, [user, token, favoriteT, setPercent, setMostPop, setLeastPop, setPlotData])
 
   const displayMostPop = () => {
     if (mostPop){
@@ -107,13 +128,6 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
       }
     }
   }
-  /*
-  if average song popularity less than or equal to 25% rating says "hipster" 
-  if greater than 25 but less than or equal to 50 rating says "based"
-  if greater than 50 but less than or equal to 75 rating says "centrist"
-  if greater than 75 rating says "normie"
-  */
-
 
   return ((user && token && percent && favoriteT) ?
     <div className="container">
@@ -189,8 +203,46 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
                 </button>
               </h2>
               <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                <div className="accordion-body">
-                  Todo
+                <div className="accordion-body d-flex justify-content-center">
+                  <Plot
+                    data={[
+                      {
+                        x: plotData.x,
+                        y: plotData.y,
+                        mode: 'lines',
+                        type: 'scatter'
+                      },
+                      {
+                        x: plotData.x,
+                        y: plotData.y,
+                        mode: 'markers',
+                        type: 'scatter',
+                        marker: {
+                          size: 5
+                        }
+                      }
+                    ]}
+                    layout={{
+                      width: 500, 
+                      height: 350, 
+                      title: 'Popularity of Top 50 Songs',
+                      xaxis: {
+                        title: "Top Song Number",
+                      },
+                      yaxis: {
+                        title: "Popularity"
+                      },
+                      paper_bgcolor: 'rgba(0,0,0,0)',
+                      plot_bgcolor: 'rgba(0,0,0,0)',
+                      font: {
+                        color: '#fff'
+                      },
+                      colorway: ['#ff91e2', '#7ae0f5'],
+                      showlegend: false
+                    }}
+
+                    className='data-plot'
+                  />
                 </div>
               </div>
             </div>
