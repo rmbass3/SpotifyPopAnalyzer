@@ -50,7 +50,7 @@ function Home() {
             },
             params: {
               limit: 50,
-              time_range: "long_term"
+              time_range: "short_term"
             }
         })
         .catch(e => {

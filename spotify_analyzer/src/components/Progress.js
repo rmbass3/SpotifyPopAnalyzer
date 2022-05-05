@@ -53,13 +53,16 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
       // y = pop
       let x = []
       let y = []
+      let text = []
       favoriteT.items.forEach((track, index) => {
         x.push(index + 1)
         y.push(track.popularity)
+        text.push(track.name)
       })
       let trace = {
         x: x,
         y: y,
+        text: text,
         mode: 'lines',
         type: 'scatter'
       }
@@ -219,7 +222,10 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
                         type: 'scatter',
                         marker: {
                           size: 5
-                        }
+                        },
+                        hovertemplate: '#%{x}: <b>%{text}</b><br><extra></extra>' +
+                                        'Popularity: <b>%{y}</b>',
+                        text: plotData.text,
                       }
                     ]}
                     layout={{
