@@ -3,9 +3,12 @@ import Progressbar from 'react-js-progressbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
-function Progress({percent, setPercent, user, token, favoriteT}) {
+function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMostPop, leastPop, setLeastPop}) {
+
+
 
   useEffect(() => {
+
     const calculatePopularity = () => {
       let total = 0
       favoriteT.items.map(track => (
@@ -13,11 +16,36 @@ function Progress({percent, setPercent, user, token, favoriteT}) {
       ))
       return Math.floor((total / favoriteT.items.length))
     }
+
+    const calculateMostPop = () => {
+      let popArr = []
+      favoriteT.items.forEach(track => {
+        if (popArr.length === 0){
+          popArr.push(track)
+        } else if (track.popularity > popArr[0]?.popularity){
+          popArr = []
+          popArr.push(track)
+        }
+      })
+      return popArr
+    }
+
     if (user && token && favoriteT.items){
       setPercent(calculatePopularity())
+      setMostPop(calculateMostPop())
     }
-  }, [user, token, favoriteT, setPercent])
+  }, [user, token, favoriteT, setPercent, setMostPop, setLeastPop])
 
+  const displayMostPop = () => {
+    if (mostPop){
+      return mostPop.map(track => (
+        <li className="bg-dark text-white list-group-item" key={track.id}>
+          <b>{track.name}</b> - {track.popularity}% Popularity
+        </li>
+      ))
+    }
+
+  }
   /*
   if average song popularity less than or equal to 25% rating says "hipster" 
   if greater than 25 but less than or equal to 50 rating says "based"
@@ -50,14 +78,14 @@ function Progress({percent, setPercent, user, token, favoriteT}) {
           <div className="accordion w-100" id="accordionExample">
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
-                <button className="accordion-button position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Popularity Score:
+                <button className="accordion-button position-relative collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Popularity Score: {percent}%
                   <FontAwesomeIcon icon={faAngleDown} className="position-absolute top-50 translate-middle"/>
                 </button>
               </h2>
-              <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  The popularity score is a value between 0 and 100, with 0 being least the popular, and 100 being the most popular. Spotify calculates this number based on the total number of plays a song has had recently.
                 </div>
               </div>
             </div>
@@ -70,7 +98,9 @@ function Progress({percent, setPercent, user, token, favoriteT}) {
               </h2>
               <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <ul className="list-group">
+                    {displayMostPop()}
+                  </ul>
                 </div>
               </div>
             </div>

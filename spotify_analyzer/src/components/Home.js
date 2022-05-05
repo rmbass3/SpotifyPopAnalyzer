@@ -12,6 +12,8 @@ function Home() {
   const [user, setUser] = useState([])
   const [favoriteT, setFavoriteT] = useState([])
   const [percent, setPercent] = useState(90)
+  const [mostPop, setMostPop] = useState([])
+  const [leastPop, setLeastPop] = useState([])
 
   // User
   useEffect(() => {
@@ -60,7 +62,7 @@ function Home() {
     <div className="home" id="home">
       <Navbar token={token} setToken={setToken} user={user} setUser={setUser}/>
       <User token={token} setToken={setToken} user={user} setUser={setUser}/>
-      <Progress percent={percent} setPercent={setPercent} user={user} token={token} favoriteT={favoriteT}/>
+      <Progress percent={percent} setPercent={setPercent} user={user} token={token} favoriteT={favoriteT} mostPop={mostPop} setMostPop={setMostPop} leastPop={leastPop} setLeastPop={setLeastPop}/>
       <FavoriteT token={token} user={user} favoriteT={favoriteT}/>
     </div>
   )
