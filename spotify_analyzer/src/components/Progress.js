@@ -133,7 +133,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
   }
 
   return ((user && token && percent && favoriteT) ?
-    <div className="container">
+    <div className="container progress-container">
       <div className="row mt-5">
         <div className="progress-circle col d-flex justify-content-center">
           <Progressbar
