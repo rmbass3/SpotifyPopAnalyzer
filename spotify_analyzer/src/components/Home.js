@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import User from "./User";
 import FavoriteT from "./FavoriteT";
 import Progress from "./Progress";
-
+import TSwitch from "./TSwitch";
 
 function Home() {
 
@@ -15,6 +15,7 @@ function Home() {
   const [mostPop, setMostPop] = useState([])
   const [leastPop, setLeastPop] = useState([])
   const [plotData, setPlotData] = useState([])
+  const [term, setTerm] = useState("medium_term")
 
   // User
   useEffect(() => {
@@ -50,7 +51,7 @@ function Home() {
             },
             params: {
               limit: 50,
-              time_range: "short_term"
+              time_range: `${term}`
             }
         })
         .catch(e => {
@@ -66,30 +67,14 @@ function Home() {
 
     getFavoriteT()
 
-  }, [token, setFavoriteT, setToken])
-
-  // useEffect(() => {
-  //   const getIsLoading = () => {
-  //     if (!token){
-  //       setIsLoading(false)
-  //     } else if (token && user && favoriteT){
-  //       console.log("ran")
-  //       setTimeout(() => {
-  //         setIsLoading(false)
-  //       }, "1000")
-  //     } else {
-  //       setIsLoading(true)
-  //     }
-  //   }
-
-  //   getIsLoading()
-  // }, [token, user, favoriteT, setIsLoading])
+  }, [token, setFavoriteT, setToken, term])
 
   return (
     <div className="home" id="home">
         <Navbar token={token} setToken={setToken} user={user} setUser={setUser}/>
         <User token={token} setToken={setToken} user={user} setUser={setUser}/>
         <Progress percent={percent} setPercent={setPercent} user={user} token={token} favoriteT={favoriteT} mostPop={mostPop} setMostPop={setMostPop} leastPop={leastPop} setLeastPop={setLeastPop} plotData={plotData} setPlotData={setPlotData}/>
+        <TSwitch setTerm={setTerm} token={token} user={user}/>
         <FavoriteT token={token} user={user} favoriteT={favoriteT}/>
     </div>
   )
