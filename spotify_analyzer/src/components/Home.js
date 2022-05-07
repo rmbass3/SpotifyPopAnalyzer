@@ -68,13 +68,29 @@ function Home() {
 
   }, [token, setFavoriteT, setToken])
 
+  // useEffect(() => {
+  //   const getIsLoading = () => {
+  //     if (!token){
+  //       setIsLoading(false)
+  //     } else if (token && user && favoriteT){
+  //       console.log("ran")
+  //       setTimeout(() => {
+  //         setIsLoading(false)
+  //       }, "1000")
+  //     } else {
+  //       setIsLoading(true)
+  //     }
+  //   }
+
+  //   getIsLoading()
+  // }, [token, user, favoriteT, setIsLoading])
 
   return (
     <div className="home" id="home">
-      <Navbar token={token} setToken={setToken} user={user} setUser={setUser}/>
-      <User token={token} setToken={setToken} user={user} setUser={setUser}/>
-      <Progress percent={percent} setPercent={setPercent} user={user} token={token} favoriteT={favoriteT} mostPop={mostPop} setMostPop={setMostPop} leastPop={leastPop} setLeastPop={setLeastPop} plotData={plotData} setPlotData={setPlotData}/>
-      <FavoriteT token={token} user={user} favoriteT={favoriteT}/>
+        <Navbar token={token} setToken={setToken} user={user} setUser={setUser}/>
+        <User token={token} setToken={setToken} user={user} setUser={setUser}/>
+        <Progress percent={percent} setPercent={setPercent} user={user} token={token} favoriteT={favoriteT} mostPop={mostPop} setMostPop={setMostPop} leastPop={leastPop} setLeastPop={setLeastPop} plotData={plotData} setPlotData={setPlotData}/>
+        <FavoriteT token={token} user={user} favoriteT={favoriteT}/>
     </div>
   )
 }

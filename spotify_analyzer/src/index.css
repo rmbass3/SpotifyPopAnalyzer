@@ -18,12 +18,17 @@ code {
   text-decoration: inherit;
 }
 
-.home {
+.home .navbar {
+  background-color: rgb(49, 54, 59)!important;
+}
+
+.home, .App {
   background-color: rgba(33,37,41,1);
 }
 
 .tracklist {
-  background: linear-gradient(180deg, rgba(33,37,41,1) 15%, rgba(122,224,245,1) 100%);
+  background-color: rgb(49, 54, 59);
+  border-radius: 10px;
 }
 
 .progress-container {
@@ -133,6 +138,10 @@ code {
 .user-content {
   flex-direction: row-reverse;
   justify-content: left;
+}
+
+.spinner-container {
+  height: 100vh;
 }
 
 /* // X-Small devices (portrait phones, less than 576px)

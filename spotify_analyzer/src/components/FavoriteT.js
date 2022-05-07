@@ -3,7 +3,7 @@ import Tilt from 'react-parallax-tilt'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faRecordVinyl } from '@fortawesome/free-solid-svg-icons'
 function FavoriteT({token, user, favoriteT}){
-  
+
   const displayFavoriteT = () => {
     if (favoriteT.items != null){
       return favoriteT.items.map((track, index) => (
@@ -45,7 +45,7 @@ function FavoriteT({token, user, favoriteT}){
 
   return ((token && user) ?
     <div>
-      <div className="tracklist d-flex flex-wrap container my-4 justify-content-center">
+      <div className="tracklist d-flex flex-wrap container mt-4 pb-4 justify-content-center">
         {displayFavoriteT()}
       </div>
     </div>

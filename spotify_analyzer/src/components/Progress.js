@@ -103,15 +103,15 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
   const displayRating = () => {
     if (percent) {
       if (percent === -1){
-        return "Loading..."
+        return "Calculating..."
       } else if (percent <= 25){
-        return "Hipster"
+        return "Rating: Hipster"
       } else if (percent <= 50){
-        return "Based"
+        return "Rating: Based"
       } else if (percent <= 75){
-        return "Normie"
+        return "Rating: Normie"
       } else {
-        return "Pop Enjoyer"
+        return "Rating: Pop Enjoyer"
       }
     }
   }
@@ -119,7 +119,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
   const displayRatingComment = () => {
     if (percent) {
       if (percent === -1){
-        return "Loading..."
+        return ""
       } else if (percent <= 25){
         return "No one listens to your favorite music"
       } else if (percent <= 50){
@@ -152,7 +152,7 @@ function Progress({percent, setPercent, user, token, favoriteT, mostPop, setMost
           />
         </div>
         <div className="progress-comment col-7 d-flex flex-column justify-content-center align-items-center mb-5">
-          <h1 className="rating text-light mb-2">Rating: {displayRating()}</h1>
+          <h1 className="rating text-light mb-2">{displayRating()}</h1>
           <h4 className="rating-comment text-light mb-3 fst-italic">{displayRatingComment()}</h4>
           <div className="accordion w-100" id="accordionExample">
             <div className="accordion-item">
