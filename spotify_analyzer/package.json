@@ -1,6 +1,7 @@
 {
   "name": "spotify_analyzer",
   "version": "0.1.0",
+  "homepage": "https://rmbass3.github.io/SpotifyPopAnalyzer",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -25,6 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -50,6 +53,7 @@
   },
   "devDependencies": {
     "@types/progressbar.js": "^1.1.2",
-    "@types/react-plotly.js": "^2.5.0"
+    "@types/react-plotly.js": "^2.5.0",
+    "gh-pages": "^4.0.0"
   }
 }

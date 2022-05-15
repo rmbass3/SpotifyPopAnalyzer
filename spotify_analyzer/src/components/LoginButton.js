@@ -2,7 +2,8 @@ import React, {useEffect} from "react";
 
 function LoginButton({token, setToken, setUser}){
   const CLIENT_ID = "d0d9e2af65404ec2a8020d0b1079068b"
-  const REDIRECT_URI = "http://localhost:3000"
+  // const REDIRECT_URI = "http://localhost:3000"
+  const REDIRECT_URI = "https://rmbass3.github.io/SpotifyPopAnalyzer/"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
   const SCOPE = "user-top-read"
